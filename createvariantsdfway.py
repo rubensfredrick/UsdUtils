@@ -1,5 +1,6 @@
 from collections import namedtuple
 from pxr import Sdf
+from . import common
 
 def addVariantSetToInstanceName(layer, instanceName, setVar=True)
     VariantValues = namedtuple("VariantValues", ["on", "off"])
@@ -12,7 +13,7 @@ def addVariantSetToInstanceName(layer, instanceName, setVar=True)
         return False
 
     _path = Sdf.Path(layer.defaultPrim).AppendChild(instanceName)
-    instancePrimSpec = sdfCreatePrimAtPath(
+    instancePrimSpec = common.sdfCreatePrimAtPath(
         layer,
         primPath=_path,
         specifier=Sdf.SpecifierOver
